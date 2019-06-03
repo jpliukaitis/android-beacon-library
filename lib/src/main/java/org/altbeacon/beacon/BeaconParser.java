@@ -420,6 +420,7 @@ public class BeaconParser implements Serializable {
 
     protected Beacon fromScanData(byte[] bytesToProcess, int rssi, BluetoothDevice device, Beacon beacon) {
         BleAdvertisement advert = new BleAdvertisement(bytesToProcess);
+        beacon.mAdvertismentByte = bytesToProcess;
         boolean parseFailed = false;
         Pdu pduToParse = null;
         int startByte = 0;

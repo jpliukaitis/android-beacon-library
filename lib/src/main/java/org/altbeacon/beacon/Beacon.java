@@ -92,6 +92,11 @@ public class Beacon implements Parcelable, Serializable {
     protected List<Long> mExtraDataFields;
 
     /**
+     * Original advertisment bytes
+     */
+    protected byte[] mAdvertismentByte;
+
+    /**
      * A double that is an estimate of how far the Beacon is away in meters.   Note that this number
      * fluctuates quite a bit with RSSI, so despite the name, it is not super accurate.
      */
@@ -375,6 +380,14 @@ public class Beacon implements Parcelable, Serializable {
      */
     public int getServiceUuid() {
         return mServiceUuid;
+    }
+
+    public byte[] getmAdvertismentByte() {
+        return mAdvertismentByte;
+    }
+
+    public void setmAdvertismentByte(byte[] mAdvertismentByte) {
+        this.mAdvertismentByte = mAdvertismentByte;
     }
 
     /**
