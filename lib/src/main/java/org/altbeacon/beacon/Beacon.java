@@ -181,6 +181,10 @@ public class Beacon implements Parcelable, Serializable {
      */
     protected boolean mMultiFrameBeacon = false;
 
+    protected int batteryLevel;
+
+    protected Integer temperature;
+
     /**
      * Required for making object Parcelable.  If you override this class, you must provide an
      * equivalent version of this method.
