@@ -86,7 +86,7 @@ public class BeaconParser implements Serializable {
     protected int[] mHardwareAssistManufacturers = new int[]{0x004c};
 
     protected List<BeaconParser> extraParsers = new ArrayList<BeaconParser>();
-    private HashMap<String, byte[]> sensoroBroadcastKeyMap;
+    private HashMap<String, byte[]> sensoroBroadcastKeyMap = new HashMap<>();
 
 
     /**
