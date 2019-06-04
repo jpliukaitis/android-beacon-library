@@ -541,6 +541,22 @@ public class Beacon implements Parcelable, Serializable {
      */
     public String getParserIdentifier() { return mParserIdentifier; }
 
+    public int getBatteryLevel() {
+        return batteryLevel;
+    }
+
+    public void setBatteryLevel(int batteryLevel) {
+        this.batteryLevel = batteryLevel;
+    }
+
+    public Integer getTemperature() {
+        return temperature;
+    }
+
+    public void setTemperature(Integer temperature) {
+        this.temperature = temperature;
+    }
+
     /**
      * @see #mMultiFrameBeacon
      * @return mMultiFrameBeacon
