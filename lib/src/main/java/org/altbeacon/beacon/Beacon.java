@@ -187,7 +187,7 @@ public class Beacon implements Parcelable, Serializable {
 
     protected int batteryLevel;
 
-    protected Integer temperature;
+    protected int temperature;
 
     /**
      * Required for making object Parcelable.  If you override this class, you must provide an
@@ -569,11 +569,11 @@ public class Beacon implements Parcelable, Serializable {
         this.batteryLevel = batteryLevel;
     }
 
-    public Integer getTemperature() {
+    public int getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(Integer temperature) {
+    public void setTemperature(int temperature) {
         this.temperature = temperature;
     }
 
