@@ -635,7 +635,7 @@ public class BeaconParser implements Serializable {
         if (e781 != null) {
             beacon.batteryLevel = e781.batteryLevel;
             beacon.temperature = e781.temperature;
-            beacon.mTxPower = e781.measuredPower;
+            beacon.measuredPower = e781.measuredPower;
             beacon.powerLevel = powerLevelToInt(e781.transmitPower);
         }
 

@@ -114,6 +114,8 @@ public class Beacon implements Parcelable, Serializable {
 
     protected int powerLevel;
 
+    protected int measuredPower;
+
     /**
      * The Bluetooth mac address
      */
@@ -402,6 +404,14 @@ public class Beacon implements Parcelable, Serializable {
 
     public void setPowerLevel(int powerLevel) {
         this.powerLevel = powerLevel;
+    }
+
+    public int getMeasuredPower() {
+        return measuredPower;
+    }
+
+    public void setMeasuredPower(int measuredPower) {
+        this.measuredPower = measuredPower;
     }
 
     /**
