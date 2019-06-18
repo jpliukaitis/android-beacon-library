@@ -185,7 +185,7 @@ public class Beacon implements Parcelable, Serializable {
      */
     protected boolean mMultiFrameBeacon = false;
 
-    protected int batteryLevel;
+    protected double batteryLevel;
 
     protected int temperature;
 
@@ -287,6 +287,10 @@ public class Beacon implements Parcelable, Serializable {
         this.mRssiMeasurementCount = otherBeacon.mRssiMeasurementCount;
         this.mRssi = otherBeacon.mRssi;
         this.mTxPower = otherBeacon.mTxPower;
+        this.measuredPower = otherBeacon.measuredPower;
+        this.powerLevel = otherBeacon.powerLevel;
+        this.batteryLevel = otherBeacon.powerLevel;
+        this.temperature = otherBeacon.temperature;
         this.mBluetoothAddress = otherBeacon.mBluetoothAddress;
         this.mBeaconTypeCode = otherBeacon.getBeaconTypeCode();
         this.mServiceUuid = otherBeacon.getServiceUuid();
@@ -402,16 +406,16 @@ public class Beacon implements Parcelable, Serializable {
         return powerLevel;
     }
 
-    public void setPowerLevel(int powerLevel) {
-        this.powerLevel = powerLevel;
+    public void setPowerLevel(int mPowerLevel) {
+        powerLevel = mPowerLevel;
     }
 
     public int getMeasuredPower() {
         return measuredPower;
     }
 
-    public void setMeasuredPower(int measuredPower) {
-        this.measuredPower = measuredPower;
+    public void setMeasuredPower(int mMeasuredPower) {
+        measuredPower = mMeasuredPower;
     }
 
     /**
@@ -561,20 +565,20 @@ public class Beacon implements Parcelable, Serializable {
      */
     public String getParserIdentifier() { return mParserIdentifier; }
 
-    public int getBatteryLevel() {
+    public double getBatteryLevel() {
         return batteryLevel;
     }
 
-    public void setBatteryLevel(int batteryLevel) {
-        this.batteryLevel = batteryLevel;
+    public void setBatteryLevel(double mBatteryLevel) {
+        batteryLevel = mBatteryLevel;
     }
 
     public int getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(int temperature) {
-        this.temperature = temperature;
+    public void setTemperature(int mTemperature) {
+        temperature = mTemperature;
     }
 
     /**
