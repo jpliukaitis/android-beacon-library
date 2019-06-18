@@ -7,6 +7,7 @@ import android.util.Log;
 
 import com.android.scanner.ScanBLERecord;
 import com.android.scanner.ScanBLEResult;
+import com.sensoro.beacon.kit.constants.TransmitPower;
 
 import org.altbeacon.beacon.logging.LogManager;
 import org.altbeacon.bluetooth.BleAdvertisement;
@@ -86,8 +87,7 @@ public class BeaconParser implements Serializable {
     protected int[] mHardwareAssistManufacturers = new int[]{0x004c};
 
     protected List<BeaconParser> extraParsers = new ArrayList<BeaconParser>();
-    private HashMap<String, byte[]> sensoroBroadcastKeyMap = new HashMap<>();
-
+    private final HashMap<String, byte[]> sensoroBroadcastKeyMap = this.generateSensoroKey();
 
     /**
      * Makes a new BeaconParser.  Should normally be immediately followed by a call to #setLayout
@@ -624,8 +624,6 @@ public class BeaconParser implements Serializable {
     }
 
     public Beacon parseSensoroBeacon(Beacon beacon, BluetoothDevice device) {
-        addSensoroKey();
-
         if (this.sensoroBroadcastKeyMap.isEmpty()) {
             return beacon;
         }
@@ -637,6 +635,8 @@ public class BeaconParser implements Serializable {
         if (e781 != null) {
             beacon.batteryLevel = e781.batteryLevel;
             beacon.temperature = e781.temperature;
+            beacon.mTxPower = e781.measuredPower;
+            beacon.powerLevel = powerLevelToInt(e781.transmitPower);
         }
 
         this.sensoroBroadcastKeyMap.clear();
@@ -644,13 +644,46 @@ public class BeaconParser implements Serializable {
         return beacon;
     }
 
-    private void addSensoroKey() {
+    private Integer powerLevelToInt(TransmitPower transmitPower) {
+        switch(transmitPower) {
+            case LEVEL0:
+                return 0;
+            case LEVEL1:
+                return 1;
+            case LEVEL2:
+                return 2;
+            case LEVEL3:
+                return 3;
+            case LEVEL4:
+                return 4;
+            case LEVEL5:
+                return 5;
+            case LEVEL6:
+                return 6;
+            case LEVEL7:
+                return 7;
+            case LEVEL8:
+                return 8;
+            case LEVEL9:
+                return 9;
+            case LEVEL10:
+                return 10;
+            case LEVEL11:
+                return 11;
+            default:
+                return -1;
+        }
+    }
+
+    private HashMap<String, byte[]> generateSensoroKey() {
+        HashMap<String, byte[]> sensoroBroadcastKeyMap = new HashMap<>();
+
         String secret = SENSORO_BROADCAST_KEY.substring(0, 28);
         byte[] secretBytes = this.hexToByte(secret);
         String keyId = SENSORO_BROADCAST_KEY.substring(28, 32);
-        if (this.sensoroBroadcastKeyMap != null) {
-            this.sensoroBroadcastKeyMap.put(keyId, secretBytes);
-        }
+        sensoroBroadcastKeyMap.put(keyId, secretBytes);
+
+        return sensoroBroadcastKeyMap;
     }
 
     private byte[] hexToByte(String hexString) {

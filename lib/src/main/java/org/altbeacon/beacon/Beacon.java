@@ -112,6 +112,8 @@ public class Beacon implements Parcelable, Serializable {
      */
     protected int mTxPower;
 
+    protected int powerLevel;
+
     /**
      * The Bluetooth mac address
      */
@@ -392,6 +394,14 @@ public class Beacon implements Parcelable, Serializable {
 
     public void setmAdvertismentByte(byte[] mAdvertismentByte) {
         this.mAdvertismentByte = mAdvertismentByte;
+    }
+
+    public int getPowerLevel() {
+        return powerLevel;
+    }
+
+    public void setPowerLevel(int powerLevel) {
+        this.powerLevel = powerLevel;
     }
 
     /**
