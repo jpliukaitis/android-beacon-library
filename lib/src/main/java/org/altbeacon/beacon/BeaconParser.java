@@ -639,8 +639,6 @@ public class BeaconParser implements Serializable {
             beacon.powerLevel = powerLevelToInt(e781.transmitPower);
         }
 
-        this.sensoroBroadcastKeyMap.clear();
-
         return beacon;
     }
 
